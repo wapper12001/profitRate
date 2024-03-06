@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>수익률 계산기</title>
+</head>
+<body>
+    <h2>수익률 계산기</h2>
+    <div>
+        <label for="buyPrice">매수 가격:</label>
+        <input type="number" id="buyPrice" placeholder="매수 가격">
+        <label for="buyAmount">매수량:</label>
+        <input type="number" id="buyAmount" placeholder="매수량">
+    </div>
+    <div>
+        <label for="sellPrice">매도 가격:</label>
+        <input type="number" id="sellPrice" placeholder="매도 가격">
+        <label for="sellAmount">매도량:</label>
+        <input type="number" id="sellAmount" placeholder="매도량">
+    </div>
+    <button onclick="calculateProfit()">수익률 계산</button>
+    <h3 id="result">수익률: </h3>
+
+    <script>
+        function calculateProfit() {
+            var buyPrice = document.getElementById('buyPrice').value;
+            var buyAmount = document.getElementById('buyAmount').value;
+            var sellPrice = document.getElementById('sellPrice').value;
+            var sellAmount = document.getElementById('sellAmount').value;
+            
+            // 수익과 수익률 계산
+            var totalBuy = buyPrice * buyAmount;
+            var totalSell = sellPrice * sellAmount;
+            var profit = totalSell - totalBuy;
+            var profitRate = (profit / totalBuy) * 100;
+
+            // 결과 표시
+            document.getElementById('result').innerHTML = `수익률: ${profitRate.toFixed(2)}%`;
+        }
+    </script>
+</body>
+</html>
