@@ -1,4 +1,3 @@
-<script>
 function calculateProfit() {
     var purchasePrice = document.getElementById('purchasePrice').value;
     var purchaseQuantity = document.getElementById('purchaseQuantity').value;
@@ -16,4 +15,3 @@ function calculateProfit() {
                      "남은 갯수: " + remainingQuantity;
     document.getElementById('result').innerHTML = resultText;
 }
-</script>
