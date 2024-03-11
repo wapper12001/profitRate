@@ -1,25 +1,23 @@
-
 function calculateProfit() {
     // 사용자 입력 값 가져오기
-    var purchasePrice = parseFloat(document.getElementById('purchasePrice').value);
-    var purchaseQuantity = parseInt(document.getElementById('purchaseQuantity').value);
-    var salePrice = parseFloat(document.getElementById('salePrice').value);
-    var saleQuantity = parseInt(document.getElementById('saleQuantity').value);
+    var purchasePrice = parseFloat(document.getElementById('purchasePrice').value); // 매수 가격
+    var purchaseQuantity = parseInt(document.getElementById('purchaseQuantity').value); // 매수한 주식의 수
+    var salePrice = parseFloat(document.getElementById('salePrice').value); // 매도 가격
+    var saleQuantity = parseInt(document.getElementById('saleQuantity').value); // 매도한 주식의 수
 
-    // 남은 주식 수 계산
+    // 판매한 주식에 대한 총 이익과 수익률 계산
+    var profitPerSoldShare = salePrice - purchasePrice; // 팔린 주식 1주당 이익
+    var totalProfit = profitPerSoldShare * saleQuantity; // 총 이익
+    var profitRate = (profitPerSoldShare / purchasePrice) * 100; // 판매한 주식에 대한 수익률
+
+    // 판매하지 않은 주식의 수
     var remainingQuantity = purchaseQuantity - saleQuantity;
 
-    // 1주에 대한 수익금과 수익률 계산
-    var profitPerShare = salePrice - purchasePrice; // 1주당 수익
-    var profitRatePerShare = (profitPerShare / purchasePrice) * 100; // 1주당 수익률 (%)
-    var profitAmountPerShare = profitPerShare; // 1주에 대한 수익금
-
     // 결과 텍스트 구성
-    var resultText = "1주당 수익률: " + profitRatePerShare.toFixed(2) + "%<br>" +
-                     "1주당 수익금액: " + profitAmountPerShare.toFixed(2) + "<br>" +
-                     "남은 갯수: " + remainingQuantity;
-    
+    var resultText = "판매한 주식의 수익률: " + profitRate.toFixed(2) + "%<br>" +
+                     "판매한 주식의 총 이익금액: " + totalProfit.toFixed(2) + "<br>" +
+                     "남은 주식의 갯수: " + remainingQuantity;
+
     // 결과를 HTML 문서에 표시
     document.getElementById('result').innerHTML = resultText;
 }
-
